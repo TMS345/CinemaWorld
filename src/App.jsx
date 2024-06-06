@@ -1,6 +1,5 @@
 // IMPORTS HERE
-import './App.css';
-import './main.css';
+import './styles.css';
 // import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import WelcomeMessage from './components/WelcomeMessage';

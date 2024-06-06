@@ -3,9 +3,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(223, 193, 193, 0.87);
-  background-color: #242424;
+  color-scheme: dark;
+  /* color: rgba(223, 193, 193, 0.87);
+  background-color: transparent; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -20,24 +20,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   padding-top: 80px;
-  background-color: #242424;
-}
-
-.login {
-  margin-right: 5px;
-  color: white
-}
-
-.login:hover {
-  color: darkgoldenrod
-}
-
-.register {
-  color: white
-}
-
-.register:hover {
-  color: darkgoldenrod
+  background-color: #1a202c;
 }
 
 .movie-overview {
@@ -48,18 +31,20 @@ body {
   padding: 10px;
   border-radius: 5px;
   box-shadow: none;
-  background-color: #443C68;
+  background-color: transparent;
+  color: white;
 }
 
 .movie-card {
-  background-color: #443C68;
+  background-color: transparent;
   display: inline-block;
   margin: 5px;
   filter: drop-shadow(5px 5px black);
+  color: white;
 }
 
 .movie-grid {
-  background-color: #635985;
+  background-color: transparent;
   display:grid;
   grid-template-columns: repeat(7, 1fr);
 }
@@ -79,20 +64,149 @@ body {
 }
 
 .modal-content {
-  background-color: white; /* White background for the modal window */
+  background-color: #1a202c; /* White background for the modal window */
   margin: auto; /* Center the modal horizontally */
   padding: 20px;
   border: 1px solid #ccc; /* Light gray border */
   border-radius: 4px; /* Rounded corners for a softer look */
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   animation-name: fadeInContent; /* Animation for modal content appearance */
-  color: black;
+  color: white;
   animation-duration: 0.3s;
   animation-delay: 0.1s; /* Delay slightly to mimic window opening effect */
   max-width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.close-button {
+  position: absolute; /* Position close button in top right corner */
+  top: 10px;
+  right: 10px;
+  /* background-color: #1a202c; Remove default button background */
+  border: none; /* Remove default button border */
+  color: white; /* Black close button text */
+  font-size: 20px; /* Larger font size for close button */
+  cursor: pointer; /* Indicate clickable behavior */
+}
+
+.close-button:hover {
+  transform: none; /* Change close button color on hover for feedback */
+}
+
+.modal-poster {
+  width: 30%; /* Display image full width within content area */
+  margin-bottom: 1rem; /* Add some space between image and text */
+}
+
+.save-to-queue-button {
+  background-color: white;
+  border: none;
+  color: #1a202c;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  /* Add some margin from content */
+}
+
+.save-to-queue-button:hover {
+  transform: none;
+  /* Darker green on hover */
+}
+
+.movie-poster {
+  max-width: 150px;
+  max-height: 250px;
+}
+
+.queue {
+  position: relative;
+  top: 5px; /* Adjust top position as needed */
+  right: 5px;
+  z-index: 1;
+  background-color: transparent;
+  color: white;
+}
+
+.user-welcome-container {
+  position: absolute;
+  top: 0; /* Position at the top */
+  left: 0; /* Position at the left */
+  padding: 10px; /* Add padding for better readability */
+  color: whitesmoke;
+}
+
+.movie-trailer {
+  margin-bottom: 10px;
+}
+
+/* Reset some basic styles */
+* {
+  margin: .1rem;
+  padding: .1rem;
+  box-sizing: border-box;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  border-radius: 0rem;
+  box-shadow: none;
+}
+
+.login-register-container,
+.search-container,
+.sort-filter-container {
+  display: flex;
+  gap: 10px;
+}
+
+.login-button, .register-button, .search-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  background-color: white;
+  color:  #1a202c;
+}
+
+.login:hover, .register:hover {
+  transform: none;
+}
+
+.search-box {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+  background-color: white;
+  color: #1a202c;
+}
+
+.search-box::placeholder {
+  color: #1a202c;
+}
+
+.sort-controls-container,
+.filter-controls-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  color: #1a202c;
 }
 
 @keyframes slideIn {
@@ -111,67 +225,4 @@ body {
   to {
     opacity: 1; /* Fade in to full opacity */
   }
-}
-
-.close-button {
-  position: absolute; /* Position close button in top right corner */
-  top: 10px;
-  right: 10px;
-  background-color: transparent; /* Remove default button background */
-  border: none; /* Remove default button border */
-  color: #242424; /* Black close button text */
-  font-size: 20px; /* Larger font size for close button */
-  cursor: pointer; /* Indicate clickable behavior */
-}
-
-.close-button:hover {
-  color: darkgoldenrod; /* Change close button color on hover for feedback */
-}
-
-.modal-poster {
-  width: 30%; /* Display image full width within content area */
-  margin-bottom: 1rem; /* Add some space between image and text */
-}
-
-.save-to-queue-button {
-  background-color: #393053;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-top: 10px;
-  /* Add some margin from content */
-}
-
-.save-to-queue-button:hover {
-  background-color: darkgoldenrod;
-  /* Darker green on hover */
-}
-
-.movie-poster {
-  max-width: 150px;
-  max-height: 250px;
-}
-
-.queue {
-  position: relative;
-  top: 5px; /* Adjust top position as needed */
-  right: 5px;
-  z-index: 1;
-  background-color: transparent;
-}
-
-.user-welcome-container {
-  position: absolute;
-  top: 0; /* Position at the top */
-  left: 0; /* Position at the left */
-  padding: 10px; /* Add padding for better readability */
-  color: whitesmoke;
-}
-
-.movie-trailer {
-  margin-bottom: 10px;
 }

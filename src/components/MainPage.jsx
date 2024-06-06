@@ -58,12 +58,12 @@ const MainPage = () => {
             {/* <WelcomeMessage /> */}
             {/* <WelcomeUser /> */}
             <div className="login-register-container">
-                <button onClick={handleLoginClick} className="login">Login</button>
-                <button onClick={handleRegisterClick} className="register">Register</button>
+                <button onClick={handleLoginClick} className="login-button">Login</button>
+                <button onClick={handleRegisterClick} className="register-button">Register</button>
             </div>
             <div className="search-container">
-                <input type="text" id="search-box" placeholder="Search for a movie..." autoComplete="on" value={movieTitle} onChange={handleMovieTitleChange} />
-                <button id="search-button" onClick={handleMovieSearch}>Search</button>
+                <input type="text" className="search-box" placeholder="Search for a movie..." autoComplete="on" value={movieTitle} onChange={handleMovieTitleChange} />
+                <button className="search-button" onClick={handleMovieSearch}>Search</button>
             </div>
             <div className="sort-filter-container">
                 <div className="sort-controls-container">
