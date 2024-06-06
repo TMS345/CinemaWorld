@@ -114,8 +114,8 @@ body {
 }
 
 .save-to-queue-button:hover {
-  transform: none;
-  /* Darker green on hover */
+  background-color: #1a202c;
+  color:  white;
 }
 
 .movie-poster {
@@ -177,8 +177,9 @@ body {
   color:  #1a202c;
 }
 
-.login:hover, .register:hover {
-  transform: none;
+.login-button:hover, .register-button:hover, .search-button:hover {
+  background-color: #1a202c;
+  color:  white;
 }
 
 .search-box {
