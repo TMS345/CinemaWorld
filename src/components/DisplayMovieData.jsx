@@ -30,18 +30,18 @@ const handleButtonClick = async (movieID, movieTitle) => {
         });
 };
 
-function GetMovieTrailer (id) {
+function GetMovieTrailer(id) {
     const [youtubeURL, setYoutubeURL] = useState('');
 
     const API_KEY = 'd7dd778d2f341c096662f9f44263b64e';
-    
+
     useEffect(() => {
         const fetchData = async () => {
             await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`, getAuthorization())
                 .then(response => response.text())
                 .then(data => {
-                    const movieData = JSON.parse (data);
-                    
+                    const movieData = JSON.parse(data);
+
                     if (!data) {
                         return "No trailer available";
                     } else {
@@ -54,7 +54,7 @@ function GetMovieTrailer (id) {
                 })
                 .catch(error => {
                     alert("Cannot fetch movie trailer url");
-                    console.log (error);
+                    console.log(error);
                     // Handle errors (e.g., display an error message)
                 });
         };
@@ -66,7 +66,7 @@ function GetMovieTrailer (id) {
 
 function MovieModal(props) {
     const { movie, onClose } = props;
-    let title = movie.title, overview = movie.overview, releaseDate = movie.release_date,
+    let title = movie.title, overview = movie.overview, releaseDate = movie.release_date.split("-")[0],
         poster = movie.poster_path, rating = Math.round(movie.vote_average * 10) / 10, genres = mapGenres(movie), id = movie.id, trailerURL = GetMovieTrailer(id);
 
     return (
@@ -243,18 +243,25 @@ const DisplayMovieData = (props) => {
     return (
         <div className="movie-overview">
             <div className='queue'>
-                <QueueList/>
+                <QueueList />
             </div>
             <h2>Movies</h2>
             <div className="movie-grid">
                 {movieRef.map((movie, index) => (
                     <div className="movie-card" key={index}>
-                        <img className="movie-poster"
-                            alt={movie.title}
-                            src={"https://image.tmdb.org/t/p/original/" + movie.poster_path}
-                            onClick={() => openModalContainer(movie)}
-                        />
-                        <h3>{movie.title}</h3>
+                        <div className="image-container">
+                            <img className="movie-poster"
+                                alt={movie.title}
+                                src={"https://image.tmdb.org/t/p/original/" + movie.poster_path}
+                                onClick={() => openModalContainer(movie)}
+                            />
+                            <div className="overlay">
+                                <h3 className="movie-title">{movie.title}</h3>
+                                <h4 className="movie-details">
+                                    {movie.release_date.split("-")[0]} | {mapGenres(movie)}
+                                </h4>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>

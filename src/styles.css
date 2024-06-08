@@ -39,11 +39,11 @@ body {
 
 .movie-card {
   background-color: transparent;
+  position: relative;
   display: inline-block;
   margin: 5px;
   filter: drop-shadow(5px 5px black);
   color: white;
-  font-size: 1.5rem;
   justify-content: center;
   text-align: center;
 }
@@ -53,6 +53,27 @@ body {
   display:grid;
   grid-template-columns: repeat(4, 1fr);
   max-width:fit-content;
+}
+
+.movie-poster {
+  width: 100%;
+  display: block;
+  max-height: auto;
+  align-content: center;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  padding: 10px;
+  text-align: left;
+  box-sizing: border-box;
+  transition: opacity 0.3s;
+  opacity: 1; /* Initially hidden */
 }
 
 .modal {
@@ -67,6 +88,24 @@ body {
   animation-name: slideIn; /* Animation for modal appearance */
   animation-duration: 0.4s;
   display: flex;
+}
+
+.image-container {
+  position: relative;
+}
+
+/* .image-container:hover .overlay {
+  opacity: 1;
+} */
+
+.movie-title {
+  margin: 0;
+  font-size: 1.2em; /* Adjust font size as necessary */
+}
+
+.movie-details {
+  margin: 5px 0 0 0;
+  font-size: .9em; /* Adjust font size as necessary */
 }
 
 .modal-content {
@@ -124,11 +163,6 @@ body {
   color:  white;
 }
 
-.movie-poster {
-  width: 15rem;
-  max-height: auto;
-}
-
 .queue {
   position: relative;
   top: 5px; /* Adjust top position as needed */
@@ -157,7 +191,7 @@ body {
   box-sizing: border-box;
 }
 
-.menu {
+.mainpage {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -220,6 +254,17 @@ select {
   border-radius: 4px;
   background-color: white;
   color: #1a202c;
+}
+
+.controls-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
 }
 
 @keyframes slideIn {
